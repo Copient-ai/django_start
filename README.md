@@ -61,13 +61,37 @@ On your local machine:
    git push -u origin main
    ```
 
-### 4. Configure and Customize
+### 4. Sync Requirements
 
-With your new repository set up, you can proceed to:
+Sync your requirements using UV:
 
-- Update the `config/settings.py` with any specific project settings.
-- Run the project locally to verify the configuration.
+   ```bash
+   uv sync
+   ```
 
----
+### 6. Activate VM
+
+Activate the VM (the following assumes OhMyZsh):
+
+   ```bash
+   vrun .venv
+   ```
+
+### 6. Initial Migration (assumed sqlite)
+
+If you want to go ahead and set up PostgreSQL now is the time. If not, migrate as follows:
+
+   ```bash
+   uv run manage.py migrate
+   ```
+
+### 7. Confirm Setup
+
+Make sure everything is set up. Run the server and you should see the django start page:
+
+   ```bash
+   uv run manage.py runserver
+   ```
+
 
 You’re all set!
