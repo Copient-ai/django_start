@@ -7,8 +7,9 @@ This guide will help you create a new project repository based on the starter Dj
 
 ### 1. Create an Empty Repository
 
-1. Go to your Git hosting service (e.g., GitHub, GitLab, Bitbucket).
-2. Create a new repository. **Do not** initialize it with a README, `.gitignore`, or license file—this will be handled locally.
+On GitHub
+
+1. Create a new repository (called 'my_new_project' hereafter). **Do not** initialize it with a README, `.gitignore`, or license file—this will be handled locally.
 
 ### 2. Clone the Starter Project
 
@@ -16,54 +17,36 @@ On your local machine:
 
 1. Clone the starter project **without including its Git history**:
 
-git clone git@github.com:Copient-ai/cps.git
-
    ```bash
-   git clone --depth 1 git@github.com:Copient-ai/django_start.git my-new-project
+   git clone git@github.com:Copient-ai/django_start.git
    ```
 
-   This command clones the starter project but only the most recent commit, effectively ignoring its Git history.
+### 3. Clone and Update Your New Project
 
-2. Navigate into your new project directory:
-
-   ```bash
-   cd my-new-project
-   ```
-
-3. Remove the existing Git configuration to unlink it from the original repository:
+1. Now clone your new project (in the same folder is assumed):
 
    ```bash
-   rm -rf .git
+   git clone git@github.com:Copient-ai/my_new_project.git
    ```
 
-### 3. Initialize a New Git Repository
+2. Copy all the files from django_start project to my_new_project EXCEPT the .git folder:
+
+   ```bash
+   rsync -av --exclude='.git' django_start/ my_new_project/
+   ```
+
+### 4. Add/commit/push initial files to your new project
 
 1. Initialize a new Git repository:
 
    ```bash
-   git init
-   ```
-
-2. Add all files and make your initial commit:
-
-   ```bash
+   cd my_new_project
    git add .
-   git commit -m "Initial commit based on Django starter project"
+   git commit -m "Initial commit based on django starter project files."
+   git push
    ```
 
-3. Link your new repository to the remote location created in Step 1:
-
-   ```bash
-   git remote add origin git@github.com:Copient-ai/my-new-project.git
-   ```
-
-4. Push your initial commit to the remote repository:
-
-   ```bash
-   git push -u origin main
-   ```
-
-### 4. Sync Requirements
+### 5. Sync Requirements
 
 Sync your requirements using UV:
 
@@ -79,7 +62,7 @@ Activate the VM (the following assumes OhMyZsh):
    vrun .venv
    ```
 
-### 6. Initial Migration (assumed sqlite)
+### 7. Initial Migration (assumed sqlite)
 
 If you want to go ahead and set up PostgreSQL now is the time. If not, migrate as follows:
 
@@ -87,7 +70,7 @@ If you want to go ahead and set up PostgreSQL now is the time. If not, migrate a
    uv run manage.py migrate
    ```
 
-### 7. Confirm Setup
+### 8. Confirm Setup
 
 Make sure everything is set up. Run the server and you should see the django start page:
 
