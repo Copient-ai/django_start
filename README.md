@@ -16,8 +16,10 @@ On your local machine:
 
 1. Clone the starter project **without including its Git history**:
 
+git clone git@github.com:Copient-ai/cps.git
+
    ```bash
-   git clone --depth 1 https://github.com/yourusername/your-starter-django-project.git my-new-project
+   git clone --depth 1 git@github.com:Copient-ai/django_start.git my-new-project
    ```
 
    This command clones the starter project but only the most recent commit, effectively ignoring its Git history.
@@ -52,7 +54,7 @@ On your local machine:
 3. Link your new repository to the remote location created in Step 1:
 
    ```bash
-   git remote add origin https://github.com/yourusername/my-new-project.git
+   git remote add origin git@github.com:Copient-ai/my-new-project.git
    ```
 
 4. Push your initial commit to the remote repository:
