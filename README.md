@@ -35,7 +35,47 @@ On your local machine:
    rsync -av --exclude='.git' django_start/ my_new_project/
    ```
 
-### 4. Add/commit/push initial files to your new project
+### 4. Change the project name for pyproject.toml and uv.lock
+
+1. Change the project name (and optionally the description) from **cps** to **my_new_project** in the __pyproject.toml__. Change this:
+
+   ```
+   [project]
+   name = "cps"
+   version = "0.1.0"
+   description = "Add your description here"
+   ...
+   ```
+
+   To this:
+
+   ```
+   [project]
+   name = "my_new_project"
+   version = "0.1.0"
+   description = "Change if you want to..."
+   ...
+   ```
+
+2. Change the package name from **cps** to **my_new_project** in the __uv.lock__. Change this (about half-way down the length of the file):
+
+   ```
+   [[package]]
+   name = "cps"
+   ...
+   ```
+
+   To this:
+
+   ```
+   [project]
+   [[package]]
+   name = "my_new_project"
+   ...
+   ```
+
+
+### 5. Add/commit/push initial files to your new project
 
 1. Initialize a new Git repository:
 
@@ -46,7 +86,7 @@ On your local machine:
    git push
    ```
 
-### 5. Sync Requirements
+### 6. Sync Requirements
 
 Sync your requirements using UV:
 
@@ -54,7 +94,7 @@ Sync your requirements using UV:
    uv sync
    ```
 
-### 6. Activate VM
+### 7. Activate VM
 
 Activate the VM (the following assumes OhMyZsh):
 
@@ -62,7 +102,7 @@ Activate the VM (the following assumes OhMyZsh):
    vrun .venv
    ```
 
-### 7. Initial Migration (assumed sqlite)
+### 8. Initial Migration (assumed sqlite)
 
 If you want to go ahead and set up PostgreSQL now is the time. If not, migrate as follows:
 
@@ -70,7 +110,7 @@ If you want to go ahead and set up PostgreSQL now is the time. If not, migrate a
    uv run manage.py migrate
    ```
 
-### 8. Confirm Setup
+### 9. Confirm Setup
 
 Make sure everything is set up. Run the server and you should see the django start page:
 
